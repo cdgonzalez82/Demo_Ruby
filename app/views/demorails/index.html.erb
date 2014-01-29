@@ -22,3 +22,23 @@
 	</ul>
 </div>
 
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+  new Highcharts.Chart({
+    chart: { renderTo: 'orders_chart' },
+    title: { text: 'Orders by Day' },
+    xAxis: { type: 'datetime' },
+    yAxis: {
+      title: { text: 'Dollars'}
+    },
+    series: [{
+      data: [1, 2, 5, 7, 3]
+    }]
+  });
+});
+</script>
+
+<div id="orders_chart" style="width: 560px; height: 300px;"></div>
+
+
+
