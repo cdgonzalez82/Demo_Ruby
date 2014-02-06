@@ -1,7 +1,7 @@
 class DemorailsController < ApplicationController
   def index
   		@nombre = "Cristian Gonzalez"
-  		@@data = File.read("C:/Users/cdgonzalez/Documents/proyectos_ruby/demo_rails/tmp/data.json")
+  		@@data = File.read("C:/Users/cdgonzalez/Documents/proyectos_ruby/demo_rails/public/data.json")
   		@file = @@data
   		@event_data = JSON.parse(@file)
   		@titleG = @event_data["glossary"]["title"]
