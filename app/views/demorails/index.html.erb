@@ -32,13 +32,148 @@
       title: { text: 'Dollars'}
     },
     series: [{
+    	name: "Download1",
+    	 pointInterval: <%= 1.day * 1000 %>,
+      pointStart: <%= 3.weeks.ago.at_midnight.to_i * 1000 %>,
+      data: [9, 3, 2, 2, 4]
+    },
+    {
+      name: "Download",	
+      pointInterval: <%= 1.day * 1000 %>,
+      pointStart: <%= 3.weeks.ago.at_midnight.to_i * 1000 %>,
       data: [1, 2, 5, 7, 3]
-    }]
+    }
+    ]
   });
 });
 </script>
 
 <div id="orders_chart" style="width: 560px; height: 300px;"></div>
+
+
+
+<div id="answer_time_chart"></div>
+<p id="prueba">PRUEBA</p>
+<script type="text/javascript">
+$("#prueba").text("hola");
+
+$(document).ready(function() {
+
+    var options = {
+        chart: {
+            renderTo: 'answer_time_chart',
+            type: 'spline'
+        },
+        series: [{}]
+    };
+    var jsonURL = 'http://localhost:3000/data2.json';
+    $("#prueba").text("hola111");
+    $.getJSON(jsonURL, function(data) {
+        options.series[0].data = data;
+        $("#prueba").text("hola222");
+        var chart = new Highcharts.Chart(options);
+        $("#prueba").text("hola1112");
+    });
+
+});
+// $(document).ready(function() {
+//       $("#prueba").text("hola11111");
+//       chart_answer = new Highcharts.Chart({
+//          chart: {
+//             backgroundColor: '#ffffff',
+//             borderColor: '#a2a2a1',
+//             borderWidth: 0,
+//             borderRadius: 0,
+//             renderTo: 'answer_time_chart',
+//             type: 'area',
+//       plotBackgroundColor: '#fffdf6'
+//          },
+//          colors: ['#3399FF'],
+//          legend: {
+//             enabled: false
+//          },
+
+//          title: {
+//             text: ''
+//          },
+//          tooltip: {
+//             borderRadius: 0,
+//             borderWidth: 0,
+//             shadow: false,
+//             style: {
+//                 fontSize: '7pt',
+//                 color: '#000000'
+//             },
+//             formatter: function() {
+//                           return 'Time: ' + this.x + 'Time: ' + (this.y/60|0) + ':' + (this.y % 60 < 10 ? '0':'')+(this.y % 60); 
+//                         }
+//         },
+//         xAxis: {
+//             labels: {
+//                 rotation: -45,
+//                 x: 0,
+//                 y: 40,
+//                 style: {
+//                     color: '#333333'
+//                 }
+//             },
+//             lineWidth: 1,
+//             lineColor: '#333333',
+//             minPadding: 0,
+//             maxPadding: 0,
+//             title: {
+//                 text: ''
+//             },
+//             tickInterval: 2,
+//             tickmarkPlacement: 'on'
+//          },
+//          yAxis: {
+//             gridLineWidth: 0,
+//             labels: {
+//                 formatter: function() {
+//                     return (this.value/60|0) + ':' + (this.value % 60 < 10 ? '0':'')+(this.value % 60);                
+//                 },
+//             style: {
+//                     color: '#333333'
+//                 }
+//             },
+//             lineWidth: 1,
+//             lineColor: '#333333',
+//             min: 0,
+//             minPadding: 0,
+//             maxPadding: 0,
+//             title: {
+//                text: ''
+//             }
+//          }
+//       });
+//    var jsonURL = 'http://viajaconrotaract.com.ar/data2.json';
+//      $("#prueba").text(jsonURL);
+
+//    // $.getJSON( jsonURL, function( data ){
+//       //var arr = [];
+//      // $("#prueba").text("dddd");      
+
+//       //   $.each(data.data, function(key, val) {
+//       //       var y = val.y;
+//       //       var customTooltip = val.customTooltip;
+//       //       arr.push({y: y, customTooltip: customTooltip})
+//       //   })
+//       // $("#prueba").text(arr);
+//       //   var cats = [];
+//       //   $.each(data.categories, function(key, val) {
+//       //       cats.push(val.cat)
+//       //   })
+
+//       // chart_answer.xAxis[0].setCategories(cats);
+//       // var series = {data: arr};
+//       // chart_answer.addSeries(series);
+//     //});
+  
+// });
+</script>
+
+
 
 
 
