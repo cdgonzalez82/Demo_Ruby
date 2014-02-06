@@ -15,6 +15,9 @@ class DemorailsController < ApplicationController
   		@para = @event_data["glossary"]["GlossDiv"]["GlossList"]["GlossEntry"]["GlossDef"]["para"]
   		@GlossSeeAlso = @event_data["glossary"]["GlossDiv"]["GlossList"]["GlossEntry"]["GlossDef"]["GlossSeeAlso"]
 
+      #Ruta del archivo
+      @jsonURL = "http://localhost:3000/data2.json";
+
 
   		# render :json => @@data
 
