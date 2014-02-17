@@ -1,25 +1,28 @@
 class DemorailsController < ApplicationController
+  
   def index
-  		@nombre = "Cristian Gonzalez"
-  		@@data = File.read("C:/Users/cdgonzalez/Documents/proyectos_ruby/demo_rails/public/data.json")
-  		@file = @@data
-  		@event_data = JSON.parse(@file)
-  		@titleG = @event_data["glossary"]["title"]
-  		@title  = @event_data["glossary"]["GlossDiv"]["title"]
-  		@GlossList_GlossSee = @event_data["glossary"]["GlossDiv"]["GlossList"]["GlossEntry"]["GlossSee"]
-  		@ID = @event_data["glossary"]["GlossDiv"]["GlossList"]["GlossEntry"]["ID"]
-  		@SortAs = @event_data["glossary"]["GlossDiv"]["GlossList"]["GlossEntry"]["SortAs"]
-  		@GlossTerm = @event_data["glossary"]["GlossDiv"]["GlossList"]["GlossEntry"]["GlossTerm"]
-  		@Acronym = @event_data["glossary"]["GlossDiv"]["GlossList"]["GlossEntry"]["Acronym"]
-  		@Abbrev = @event_data["glossary"]["GlossDiv"]["GlossList"]["GlossEntry"]["Abbrev"]
-  		@para = @event_data["glossary"]["GlossDiv"]["GlossList"]["GlossEntry"]["GlossDef"]["para"]
-  		@GlossSeeAlso = @event_data["glossary"]["GlossDiv"]["GlossList"]["GlossEntry"]["GlossDef"]["GlossSeeAlso"]
+
+  		@nombre = "Cristian Gonzalez"  		
 
       #Ruta del archivo
-      @jsonURL = "http://localhost:3000/data2.json";
+      @jsonURL = "http://localhost:3000/data2.json"
+      @photo_path = "calendario.jpg"	
 
 
-  		# render :json => @@data
 
+  end
+
+  def show
+  	# Create a calendar with an event (standard method)
+		cal = Icalendar::Calendar.new
+		cal.event do
+		  dtstart       Date.new(2005, 04, 29)
+		  dtend         Date.new(2005, 04, 28)
+		  summary     "Meeting with the man."
+		  description "Have a long lunch meeting and decide nothing..."
+		  klass       "PRIVATE"
+		end
+
+		cal.publish
   end
 end

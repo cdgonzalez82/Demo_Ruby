@@ -6,10 +6,35 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "jquery-1.4.2.min", "rails", "highcharts" %>
   <%= csrf_meta_tags %>
+
+  <div id="header">  		
+  		<h3>CYCLE  TIME & $/FT</h3>
+  </div>
 </head>
 <body>
 
-<%= yield %>
+  <div class="cabecera">
+      <p>TREND:   </p>
+      <%= radio_button_tag 'TREND', '12M' %>
+      <%= label_tag '12M' %>      
+      <%= radio_button_tag 'TREND', '5Q' %>
+      <%= label_tag '5Q' %>      
+      <%= radio_button_tag 'TREND', '2Y', true %>
+      <%= label_tag '2Y' %>      
+      <p>WELL TYPE:   </p>
+      <%= radio_button_tag 'WELL TYPE', 'horizontal' %>
+      <%= label_tag 'horizontal' %>      
+      <%= radio_button_tag 'WELL TYPE', 'vertical' %>
+      <%= label_tag 'vertical' %>      
+  </div>
+
+<div class="calendar1">
+	<%= image_tag "/calendario.jpg" %>
+</div>
+
+<div id="body">
+	<%= yield %>
+</div>
 
 </body>
 </html>

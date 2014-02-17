@@ -54,4 +54,5 @@ DemoRails::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  match ':controller(/:action(/:id(.:format)))' => 'demorails#show', via: [:get, :post]
 end

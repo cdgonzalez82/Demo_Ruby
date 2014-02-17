@@ -1,44 +1,23 @@
-<h1>Demo Rails  - Monocle: <%= @nombre %></h1>
-<p>Mostrar Resultados Json:</p>
 
-<div>
-	<p><b>Titulo:</b> <%= @titleG %><p>	
-	<p><b>GlossDiv:</b></p>
-	<ul><p><b>Titulo:</b> <%= @title %></p>	</ul>
-	<ul><p><b>GlossList:</b></p>
-		<ul><b>GlossSee:</b><%= @GlossList_GlossSee %></ul>
-	</ul>	
-	<ul><p><b>GlossEntry:</b></p>
-		<ul><p><b>ID: </b><%= @ID %></p></ul>
-		<ul><p><b>SortAs: </b><%= @SortAs %></p></ul>
-		<ul><p><b>GlossTerm: </b><%= @GlossTerm %></p></ul>
-		<ul><p><b>Acronym: </b><%= @Acronym %></p></ul>
-		<ul><p><b>Abbrev: </b><%= @Acronym %></p></ul>
-		<ul><p><b>GlossDef: </b></p>
-			<ul><p><b>para: </b><%= @para %></p></ul>	
-			<ul><p><b>GlossSeeAlso:</b><%= @GlossSeeAlso %></p></ul>	
-		</ul>
 
-	</ul>
-</div>
 
 <script type="text/javascript" charset="utf-8">
   $(function () {
   new Highcharts.Chart({
     chart: { renderTo: 'orders_chart' },
-    title: { text: 'Orders by Day' },
+    title: { text: 'DRILLYNG CYCLE TIME' },
     xAxis: { type: 'datetime' },
     yAxis: {
-      title: { text: 'Dollars'}
+      title: { text: ''}
     },
     series: [{
-    	name: "Download1",
+    	name: "Data1",
     	 pointInterval: <%= 1.day * 1000 %>,
       pointStart: <%= 3.weeks.ago.at_midnight.to_i * 1000 %>,
       data: [9, 3, 2, 2, 4]
     },
     {
-      name: "Download",	
+      name: "Data2",	
       pointInterval: <%= 1.day * 1000 %>,
       pointStart: <%= 3.weeks.ago.at_midnight.to_i * 1000 %>,
       data: [1, 2, 5, 7, 3]
@@ -48,9 +27,9 @@
 });
 </script>
 
-<div id="orders_chart" style="width: 560px; height: 300px;"></div>
+<div class="chart2" id="orders_chart"></div>
 
-<div id="answer_time_chart"></div>
+<div class="chart2" id="answer_time_chart"></div>
 <script type="text/javascript">
 $(document).ready(function() {
     var options = {
@@ -58,6 +37,33 @@ $(document).ready(function() {
             renderTo: 'answer_time_chart',
             type: 'spline'
         },
+        title: { text: 'COMPLETION CYCLE TIME' },
+        yAxis: {
+                title: { text: ''}
+              },
+        series: [{}]
+    };        
+    var jsonURL ='<%= @jsonURL %>'; 
+    $.getJSON(jsonURL, function(data) {
+        options.series[0].data = data;        
+        var chart = new Highcharts.Chart(options);      
+    });
+
+});
+</script>
+
+<div class="chart3" id="answer_time_chart1"></div>
+<script type="text/javascript">
+$(document).ready(function() {
+    var options = {
+        chart: {
+            renderTo: 'answer_time_chart1',
+            type: 'spline'
+        },
+        title: { text: 'DRILLING FT' },
+        yAxis: {
+                title: { text: ''}
+              },
         series: [{}]
     };        
     var jsonURL ='<%= @jsonURL %>'; 
