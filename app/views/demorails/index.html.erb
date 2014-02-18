@@ -11,16 +11,26 @@
       title: { text: ''}
     },
     series: [{
-    	name: "Data1",
-    	 pointInterval: <%= 1.day * 1000 %>,
-      pointStart: <%= 3.weeks.ago.at_midnight.to_i * 1000 %>,
-      data: [9, 3, 2, 2, 4]
+    	name: "Data1",    	
+      data: [
+                [Date.UTC(2014, 0, 1), 22.0],
+                [Date.UTC(2014, 1, 2), 35.0],
+                [Date.UTC(2014, 2, 3), 55.7],
+                [Date.UTC(2014, 3, 6), 63.20],
+                [Date.UTC(2014, 4, 7), 75.90],
+                [Date.UTC(2014, 5, 8), 79.98]
+             ]
     },
     {
-      name: "Data2",	
-      pointInterval: <%= 1.day * 1000 %>,
-      pointStart: <%= 3.weeks.ago.at_midnight.to_i * 1000 %>,
-      data: [1, 2, 5, 7, 3]
+      name: "Data2",	      
+      data: [
+                [Date.UTC(2014, 0, 1), 19.9],
+                [Date.UTC(2014, 1, 2), 81.5],
+                [Date.UTC(2014, 2, 3), 46.4],
+                [Date.UTC(2014, 3, 6), 80.0],
+                [Date.UTC(2014, 4, 7), 71.0],
+                [Date.UTC(2014, 5, 8), 50.0]
+             ]
     }
     ]
   });
@@ -38,8 +48,22 @@ $(document).ready(function() {
             type: 'spline'
         },
         title: { text: 'COMPLETION CYCLE TIME' },
+        xAxis: {               
+                labels : {
+                  formatter: function() {
+                    var date = Date.UTC(2014, 0, 1);
+                      return date;
+                  }
+                }
+
+        },
         yAxis: {
-                title: { text: ''}
+                title: { text: ''},
+                labels : {
+                  formatter: function() {
+                      return this.value;
+                  }
+                }
               },
         series: [{}]
     };        
