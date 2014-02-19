@@ -48,11 +48,12 @@ $(document).ready(function() {
             type: 'spline'
         },
         title: { text: 'COMPLETION CYCLE TIME' },
-        xAxis: {               
+        xAxis: {          
+                categories: ['Jan 14', 'Feb 14', 'Mar 14', 'Apr 14', 'May 14', 'Jun 14', 'Jul 14', 'Sep 14', 'Oct 14', 'Nov 14', 'Dec 14'],
                 labels : {
                   formatter: function() {
-                    var date = Date.UTC(2014, 0, 1);
-                      return date;
+                    
+                      return this.value;
                   }
                 }
 
@@ -85,12 +86,21 @@ $(document).ready(function() {
             type: 'spline'
         },
         title: { text: 'DRILLING FT' },
+        xAxis: {          
+                categories: ['Jan 14', 'Feb 14', 'Mar 14', 'Apr 14', 'May 14', 'Jun 14', 'Jul 14', 'Sep 14', 'Oct 14', 'Nov 14', 'Dec 14'],
+                labels : {
+                  formatter: function() {                  
+                      return this.value;
+                  }
+                }
+
+        },
         yAxis: {
                 title: { text: ''}
               },
         series: [{}]
     };        
-    var jsonURL ='<%= @jsonURL %>'; 
+    var jsonURL ='<%= @jsonURL2 %>'; 
     $.getJSON(jsonURL, function(data) {
         options.series[0].data = data;        
         var chart = new Highcharts.Chart(options);      

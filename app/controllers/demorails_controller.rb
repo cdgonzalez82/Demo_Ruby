@@ -6,6 +6,7 @@ class DemorailsController < ApplicationController
 
       #Ruta del archivo
       @jsonURL = "http://localhost:3000/data2.json"
+      @jsonURL2 = "http://localhost:3000/data3.json"
       @photo_path = "calendario.jpg"	
 
 
